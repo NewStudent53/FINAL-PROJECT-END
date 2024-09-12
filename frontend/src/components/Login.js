@@ -12,7 +12,7 @@ function Login() {
     e.preventDefault();
     const user = { email, password };
     try {
-      const response = await axios.post('http://localhost:5000/login', user);
+      const response = await axios.post('https://final-project-end-2.onrender.com/login', user);
       alert(`${response.data.message} Your ID is ${response.data.user_id}`);
       setError(''); // Limpiar el mensaje de error si el login es exitoso
     } catch (error) {
