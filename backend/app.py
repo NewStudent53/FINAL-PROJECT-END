@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
@@ -11,6 +11,10 @@ app.config['SECRET_KEY'] = 'your_secret_key'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 CORS(app)
+
+@app.route('/')
+def home():
+    return jsonify(message="Hello, Flask!")
 
 from backend import routes
 
