@@ -1,40 +1,90 @@
-.homepage-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  
-  .header {
-    background-color: #f0f0f0;
-    padding: 10px;
-    text-align: right;
-  }
-  
-  .sidebar {
-    width: 200px;
-    background-color: #2c3e50;
-    color: white;
-    padding: 20px;
-    height: 100%;
-    position: fixed;
-  }
-  
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .sidebar ul li {
-    margin: 20px 0;
-  }
-  
-  .sidebar ul li a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .content {
-    margin-left: 220px;
-    padding: 20px;
-  }
-  
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --primary-color: #10B981; /* Emerald */
+  --secondary-color: #3B82F6; /* Blue */
+  --accent-color: #F59E0B; /* Amber */
+  --background-color: #F0FDF4; /* Light Emerald */
+  --text-color: #1F2937; /* Gray 800 */
+  --sidebar-width: 250px;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  height: 100%;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.dashboard {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  flex: 1;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(45deg, #10B981 0%, #3B82F6 100%);
+  color: white;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.nav-item {
+  padding: 10px 15px;
+  margin: 5px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.nav-item:hover {
+  background-color: var(--background-color);
+}
+
+.nav-item.active {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.project-description {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.project-description h2 {
+  color: var(--primary-color);
+}
+
+.project-description ul, .project-description ol {
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+.project-description li {
+  margin-bottom: 10px;
+}
