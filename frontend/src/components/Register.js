@@ -14,7 +14,7 @@ function Register() {
     e.preventDefault();
     const user = { username, email, password };
     try {
-      const response = await axios.post('https://final-project-end-2.onrender.com/register', user);
+      const response = await axios.post('http://localhost:5000/register', user);
       alert(response.data.message);
       setError('');
       navigate('/login'); // Redirigir al login después de un registro exitoso
