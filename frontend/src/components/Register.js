@@ -13,6 +13,10 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = { username, email, password };
+  
+    // Imprimir el valor de la variable de entorno en la consola
+    console.log('API URL:', process.env.REACT_APP_API_URL);
+  
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/register`, user);
       alert(response.data.message);
@@ -22,6 +26,7 @@ function Register() {
       setError(error.response.data.message); // Mostrar mensaje de error
     }
   };
+  
 
   return (
     <div className="container">
