@@ -14,7 +14,7 @@ function Register() {
     e.preventDefault();
     const user = { username, email, password };
     try {
-      const response = await axios.post('http://localhost:5000/register', user);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/register`, user);
       alert(response.data.message);
       setError('');
       navigate('/login'); // Redirigir al login después de un registro exitoso
