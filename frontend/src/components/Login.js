@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Auth.css'; // Importar el archivo CSS compartido
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +16,7 @@ function Login() {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/login`, user);
       alert(`${response.data.message} Your ID is ${response.data.user_id}`);
       setError(''); // Limpiar el mensaje de error si el login es exitoso
+      navigate(`/homepage/${response.data.user_id}`); // Redirigir al Homepage con el user_id
     } catch (error) {
       setError('Email o contraseña incorrectos'); // Mostrar mensaje de error
     }
