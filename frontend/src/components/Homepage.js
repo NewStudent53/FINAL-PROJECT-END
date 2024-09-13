@@ -1,20 +1,21 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import './Homepage.css'; // Asegúrate de crear este archivo CSS para estilizar tu componente
 
 function Homepage() {
   const { userId, username } = useParams(); // Obtener el user_id y username de los parámetros de la URL
+  const navigate = useNavigate();
 
   return (
     <div className="dashboard">
       <div className="sidebar">
         <svg className="logo" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%">
+            <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" style={{ stopColor: '#4CAF50', stopOpacity: 1 }} />
               <stop offset="100%" style={{ stopColor: '#81C784', stopOpacity: 1 }} />
             </linearGradient>
-            <linearGradient id="folderGradient" x1="0%" y1="0%" x2="100%">
+            <linearGradient id="folderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" style={{ stopColor: '#2196F3', stopOpacity: 1 }} />
               <stop offset="100%" style={{ stopColor: '#64B5F6', stopOpacity: 1 }} />
             </linearGradient>
@@ -38,12 +39,12 @@ function Homepage() {
           <polygon points="203,168 197,174 191,162" fill="#FFC107" />
         </svg>
         <div className="nav-item active">Homepage</div>
-        <div className="nav-item" id="myfiles">My Files</div>
-        <div className="nav-item" id="trash">Trash</div>
+        <div className="nav-item" id="myfiles" onClick={() => navigate(`/myfiles/${userId}/${username}`)}>My Files</div>
+        <div className="nav-item" id="trash" onClick={() => navigate(`/trash/${userId}/${username}`)}>Trash</div>
       </div>
       <div className="main-content">
         <div className="header">
-          <h1>Welcome!{userId} {username}</h1>
+          <h1>Welcome {username}! ID: {userId}</h1>
         </div>
         <div className="project-description">
           <h2>Proyecto: File Manager App</h2>
@@ -76,5 +77,4 @@ function Homepage() {
     </div>
   );
 }
-
 export default Homepage;
